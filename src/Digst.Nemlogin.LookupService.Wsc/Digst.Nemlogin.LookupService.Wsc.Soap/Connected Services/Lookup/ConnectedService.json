@@ -1,0 +1,18 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "../../wsdl/LookupService.wsdl"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "messageContract": true,
+    "namespaceMappings": [
+      "*, Lookup"
+    ],
+    "sync": true,
+    "targetFramework": "net472",
+    "typeReuseMode": "None"
+  }
+}

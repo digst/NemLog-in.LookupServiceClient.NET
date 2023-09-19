@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
+    <RootNamespace>Digst.Nemlogin.LookupService.Shared</RootNamespace>
+    <AssemblyName>Digst.Nemlogin.LookupService.Shared</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release</Configurations>
+    <LangVersion>8</LangVersion>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Digst.OioIdws.Wsc" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <None Update="certificates\NemLog-in EIA.Frontend - Test.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="certificates\NemLog-in IdP - Test.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="certificates\NemLog-in LookupService - Test.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="certificates\NemLog-in LookupServices.TestWSC - Test.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="Certificates\oces3\NemLog-in EIA.Frontend - Test.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="Certificates\oces3\NemLog-in IdP - Test.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="Certificates\oces3\NemLog-in LookupServices.TestWSC - Test.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+  </ItemGroup>
+
+
+
+</Project>

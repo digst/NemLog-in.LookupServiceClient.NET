@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
+    <RootNamespace>Digst.Nemlogin.LookupService.Wsc.Soap</RootNamespace>
+    <AssemblyName>Digst.Nemlogin.LookupService.Wsc.Soap</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release;Local</Configurations>
+    <LangVersion>8</LangVersion>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <ApplicationIcon />
+    <OutputType>exe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Digst.OioIdws.Wsc" Version="3.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Digst.Nemlogin.LookupService.Shared\Digst.Nemlogin.LookupService.Shared.csproj" />
+  </ItemGroup>
+</Project>
