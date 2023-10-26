@@ -1,0 +1,3 @@
+README.md merge=ours
+src/jenkins.groovy merge=ours
+src/unittest.groovy merge=ours

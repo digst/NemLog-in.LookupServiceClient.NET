@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>Digst.Nemlogin.LookupService.Wsc.Test</RootNamespace>
+    <AssemblyName>Digst.Nemlogin.LookupService.Wsc.Test</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release</Configurations>
+    <LangVersion>8</LangVersion>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Digst.OioIdws.Rest.Client" Version="3.0.2" />
+    <PackageReference Include="Digst.OioIdws.Wsc" Version="3.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="xunit" Version="2.5.1" />
+    <PackageReference Include="xunit.core" Version="2.5.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Digst.Nemlogin.LookupService.Shared\Digst.Nemlogin.LookupService.Shared.csproj" />
+    <ProjectReference Include="..\Digst.Nemlogin.LookupService.Wsc.Rest\Digst.Nemlogin.LookupService.Wsc.Rest.csproj" />
+    <ProjectReference Include="..\Digst.Nemlogin.LookupService.Wsc.Soap\Digst.Nemlogin.LookupService.Wsc.Soap.csproj" />
+  </ItemGroup>
+</Project>

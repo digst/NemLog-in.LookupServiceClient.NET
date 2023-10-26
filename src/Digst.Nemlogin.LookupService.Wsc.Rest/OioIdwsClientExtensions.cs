@@ -14,4 +14,4 @@ namespace Digst.Nemlogin.LookupService.Wsc.Rest
             return await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
         }
     }
-}
+}  

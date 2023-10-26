@@ -30,7 +30,7 @@ namespace Digst.Nemlogin.LookupService.Shared
         public WscCertificates()
         {
             StsCertificate= LoadCertificateFrom(@"Certificates\NemLog-in IdP - Test.cer");
-            WspFrontendCertificate = LoadCertificateFrom(@"Certificates\NemLog-in EIA.Frontend - Test.cer");
+            WspFrontendCertificate = LoadCertificateFrom(@"Certificates\NemLog-in LookupService - Test.cer");
             WscClientCertificate = LoadCertificateFrom(@"Certificates\NemLog-in LookupServices.TestWSC - Test.pfx");
             ValidateOrThrow();
         }
