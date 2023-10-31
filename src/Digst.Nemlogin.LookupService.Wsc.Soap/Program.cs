@@ -14,6 +14,7 @@ namespace Digst.Nemlogin.LookupService.Wsc.Soap
         {
             // Config implicitly loads certificate
             _wscCertificates = new WscCertificates();
+            _wscCertificates.Install();
             _wscConfig = new WscConfig();
             var configuration = _wscConfig.CreateOioIdwsConfiguration(_wscCertificates);
 

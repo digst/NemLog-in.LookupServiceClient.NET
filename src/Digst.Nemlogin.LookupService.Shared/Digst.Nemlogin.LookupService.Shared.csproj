@@ -34,6 +34,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
 
+    <None Update="certificates\OCES3 Intermediate CA - CTI.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <None Update="certificates\OCES3 ROOT CA - CTI.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
     <None Update="Certificates\oces3\NemLog-in EIA.Frontend - Test.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
