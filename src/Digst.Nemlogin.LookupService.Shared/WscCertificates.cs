@@ -49,7 +49,7 @@ namespace Digst.Nemlogin.LookupService.Shared
             return LoadCertificateFrom(certificatePath, "Test1234");
         }
 
-        private X509Certificate2 LoadCertificateFrom(string filePath, string password = null)
+        private X509Certificate2 LoadCertificateFrom(string filePath, string password)
         {
             try
             {
