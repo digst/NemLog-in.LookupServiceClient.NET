@@ -7,6 +7,15 @@
     {
         public string BaseUrl { get; set; }
 
+        /// <summary>
+        /// Domain for NemLog-in environment.
+        /// 
+        /// Options are:
+        ///   * test-devtest4-nemlog-in.dk (inttest leg of Pre-production)
+        ///   * test-nemlog-in.dk (Integrationtest)
+        ///   * nemlog-in.dk (Production)
+        /// 
+        /// </summary>
         public string Domain { get; }
 
         public string AudienceUri { get; set; }
