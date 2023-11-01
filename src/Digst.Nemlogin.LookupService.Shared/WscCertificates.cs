@@ -1,5 +1,4 @@
-﻿using Digst.OioIdws.Wsc.OioWsTrust;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,28 +12,34 @@ namespace Digst.Nemlogin.LookupService.Shared
     public class WscCertificates
     {
         /// <summary>
-        /// Root CA
+        /// Root CA certificate
         /// </summary>
         public X509Certificate2 CA { get; set; }
 
         /// <summary>
-        /// Intermediate Root CA
+        /// Intermediate CA certificate
         /// </summary>
         public X509Certificate2 CAIntermediate { get; set; }
 
         /// <summary>
-        /// public key for validating signing from sts
+        /// NemLog-in STS certificate.
+        /// 
+        /// Public key is used for for validating signatures on SAML Tokens received from the STS.
         /// </summary>
         public X509Certificate2 StsCertificate { get; set; }
+        
         /// <summary>
-        /// public key for validating signing for lookup service wsp
+        /// Public key for validating WS-Security signatures for Lookup Service webservice.
+        ///
+        /// Only required for SOAP.
         /// </summary>
         public X509Certificate2 WspFrontendCertificate { get; set; }
+        
         /// <summary>
-        /// private key for sts login and retrieving assertion
+        /// Certificate and private key for WSC ("systembrugers certifikat")
         ///
-        /// NOTE: do NOT reuse this certificate for your own wsc entity metadata, this will make the wsc sample client fail.
-        /// Create your own client certificate for your own client
+        /// NOTE: do NOT reuse this certificate for your own WSC entity metadata, this will make the WSC sample client fail.
+        /// Create your own client certificate for your own client.
         /// </summary>
         public X509Certificate2 WscClientCertificate { get; set; }
 
@@ -43,7 +48,8 @@ namespace Digst.Nemlogin.LookupService.Shared
             CA = LoadCertificateFrom(@"Certificates\OCES3 ROOT CA - CTI.cer");
             CAIntermediate = LoadCertificateFrom(@"Certificates\OCES3 Intermediate CA - CTI.cer");
             StsCertificate = LoadCertificateFrom(@"Certificates\NemLog-in IdP - Test.cer");
-            WspFrontendCertificate = LoadCertificateFrom(@"Certificates\NemLog-in LookupService - Test.cer");
+            //The WspFrontendCertificate can be set to null if only REST is used.
+            WspFrontendCertificate = LoadCertificateFrom(@"Certificates\NemLog-in LookupService - Test.cer"); 
             WscClientCertificate = LoadCertificateFrom(@"Certificates\NemLog-in LookupServices.TestWSC - Test.pfx");
             ValidateOrThrow();
         }
@@ -57,12 +63,12 @@ namespace Digst.Nemlogin.LookupService.Shared
             ValidateInstallation(StoreName.Root, CA, "Trusted Root Certification Authorities");
             ValidateInstallation(StoreName.CertificateAuthority, CAIntermediate, "Intermediate Certification Authorities");
 
-            if (StsCertificate == null || WspFrontendCertificate == null || WscClientCertificate == null)
+            if (StsCertificate == null || WscClientCertificate == null)
                 throw new Exception(
                     $"sts certificate:{StsCertificate?.Subject ?? "null"} wsc certificate:{WscClientCertificate?.Subject ?? "null"} eia frontend certificate:{WspFrontendCertificate?.Subject ?? "null"} ");
         }
 
-        private void ValidateInstallation(StoreName storeName, X509Certificate2 certificate, string whereToInstall)
+        private static void ValidateInstallation(StoreName storeName, X509Certificate2 certificate, string whereToInstall)
         {
             using var store = new X509Store(storeName);
             store.Open(OpenFlags.ReadWrite);
@@ -105,7 +111,7 @@ namespace Digst.Nemlogin.LookupService.Shared
             }
         }
 
-        private List<X509Certificate2> LoadCertificateChainFrom(string filePath, string password)
+        private static List<X509Certificate2> LoadCertificateChainFrom(string filePath, string password)
         {
             var collection = new X509Certificate2Collection();
             if (filePath.EndsWith(".cer"))
@@ -119,7 +125,7 @@ namespace Digst.Nemlogin.LookupService.Shared
             return certificates;
         }
 
-        public static void RemoveExistingCertificateFromStore(string thumbprint, StoreLocation location)
+        private static void RemoveExistingCertificateFromStore(string thumbprint, StoreLocation location)
         {
             using var store = new X509Store(StoreName.My, location);
             store.Open(OpenFlags.ReadWrite | OpenFlags.IncludeArchived);
@@ -132,11 +138,12 @@ namespace Digst.Nemlogin.LookupService.Shared
             store.Close();
         }
 
-        public static void AddCertificateToStore(X509Certificate2 certificate, StoreLocation location)
+        private static void AddCertificateToStore(X509Certificate2 certificate, StoreLocation location)
         {
             using (var store = new X509Store(StoreName.My, location))
             {
                 store.Open(OpenFlags.ReadWrite);
+                Console.Out.WriteLine($"Adding certificate: {certificate.Subject}");
                 store.Add(certificate);
                 store.Close();
             }
