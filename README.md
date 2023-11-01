@@ -30,10 +30,10 @@ The solution consists of four projects:
 
 The clients will:
 
-* Install the required certificates (included in ```Shared/certificates``` folder) in CurrentUser certificate store.
-* Request a SAML token at the NemLog-in STS
-* Exchange the SAML token for a JWT token (only for REST)
-* Invoke the full set of business methods in the NemLog-in pre-production environment (domain ```test-devtest4-nemlog-in.dk```)
+1. Install the required certificates (included in ```Shared/certificates``` folder) in CurrentUser certificate store.
+2. Request a SAML token at the NemLog-in STS
+3. Exchange the SAML token for a JWT token (only for REST)
+4. Invoke the full set of business methods in the NemLog-in pre-production environment (domain ```test-devtest4-nemlog-in.dk```)
 
 See ```WscConfig``` and ```WscCertificates```.
 
@@ -78,11 +78,52 @@ The certificate installation is included in the code for convenience. When using
 certificates prior to executing the client, and in that case the WscCertificates constructor should merely
 construct ```X509Certificate2``` instances by looking up the certificates in the certificate store.
 
+## Other NemLog-in environments
+
+The client code may also be used to invoke NemLog-in Lookup Services in the Integrationtest and Production environments.
+
+The changes described in this section describes configuration changes needed to enable integration.
+
+Note that these changes on their own will not render the code production grade! To make it so you must at least implement
+changes to not include the sensitive certificate private keys in your application code.
+
+To invoke services in other environments you must:
+
+* Follow the guide [UG] to establish your own WSC ("systembruger") and client certificate
+* Change the ```WscConfig.Domain```:
+  * Integrationtest: ```test-nemlog-in.dk```
+  * Production: ```nemlog-in.dk```
+* Obtain the STS and - for SOAP use - the Lookup Service for the relevant environment. See [Inttest] and [Prod].
+
 
 ## References
 
 <dl>
 <dt>[SS]</dt>
-<dd>NemLog-in Supporting Services documentation, available at https://tu.nemlog-in.dk/oprettelse-og-administration-af-tjenester/log-in/dokumentation.og.guides/. 
+<dd>NemLog-in Supporting Services documentation, available at 
+https://tu.nemlog-in.dk/oprettelse-og-administration-af-tjenester/log-in/dokumentation.og.guides/. 
 </dd>
+
+<dt>[UG]</dt>
+<dd>Guide til anvendelse af Opslagstjenester, available at 
+https://tu.nemlog-in.dk/oprettelse-og-administration-af-tjenester/log-in/dokumentation.og.guides/. 
+</dd>
+
+<dt>[Inttest]</dt>
+<dd>
+Certificates for Integrationtest can be obtained at 
+https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/log.in/dokumentation.og.guides/integrationstestmiljo/
+and
+https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/security-token-service/hjaelp-og-vejledning/integrationstest/
+</dd>
+
+<dt>[Prod]</dt>
+<dd>
+Certificates for Production can be obtained at 
+https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/log.in/dokumentation.og.guides/integrationstestmiljo/
+and
+https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/security-token-service/hjaelp-og-vejledning/produktionsmiljoet/
+</dd>
+
+
 </dl>
