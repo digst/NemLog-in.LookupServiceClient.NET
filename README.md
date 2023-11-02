@@ -62,9 +62,11 @@ Used for verifying authenticity of the SAML tokens issued by the STS.
 Note that SOAP and REST clients must update this certificate in their environment when it is updated in NemLog-in.
 </dd>
 
-
 <dt>NemLog-in LookupServices.TestWSC - Test.pfx</dt>
-<dd>Certificate used by SOAP and REST clients (WSC's) to sign the STS request.</dd>
+<dd>Certificate used by SOAP and REST clients (WSC's) to sign the STS request.
+NOTE: It is very important, that you do not reuse this certificate for your own WSC! Follow the guide 
+[UG] when you establish your own WSC.
+</dd>
 
 <dt>NemLog-in LookupService - Test.cer</dt>
 <dd>WS-Security signing certificate used by the Lookup Service SOAP webservice.
@@ -86,10 +88,10 @@ The changes described in this section describes configuration changes needed to 
 
 Note that these changes on their own will not render the code production grade! To make it so you must at least implement
 changes to not include the sensitive certificate private keys in your application code.
-
+ 
 To invoke services in other environments you must:
 
-* Follow the guide [UG] to establish your own WSC ("systembruger") and client certificate
+* Follow the guide [UG] to establish your own WSC ("systembruger") and your own client certificate (DO NOT reuse the certificate provided here)
 * Change the ```WscConfig.Domain```:
   * Integrationtest: ```test-nemlog-in.dk```
   * Production: ```nemlog-in.dk```
