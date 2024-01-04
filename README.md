@@ -5,6 +5,10 @@ An OIO IDWS client sample for NemLog-in Lookup Services.
 
 This code shows how to invoke NemLog-in Lookup Services using the OIO IDWS authorization model. 
 
+The samples are concrete implementations of OIO IDWS Web Service Client (WSC) "abstract" samples found in the public available github [repository](https://github.com/digst/OIOIDWS.Net/tree/master/Examples). If you are creating a new OIO IDWS Web Service Provider (WSP), then you should go here and find the more general OIO IDWS documentation.
+
+The LookupService.WSC samples utilizes the public available Nugets which is also  produced by the output of the general OIO IDWS [repository](https://github.com/digst/OIOIDWS.Net/tree/master).
+
 The services are described in section 2 of [SS].
 Please refer to [SS] for detailed documentation of available services. 
 
