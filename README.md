@@ -118,17 +118,15 @@ https://tu.nemlog-in.dk/oprettelse-og-administration-af-tjenester/log-in/dokumen
 <dt>[Inttest]</dt>
 <dd>
 Certificates for Integrationtest can be obtained at 
-https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/log.in/dokumentation.og.guides/integrationstestmiljo/
-and
-https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/security-token-service/hjaelp-og-vejledning/integrationstest/
+
+https://www.nemlog-in.dk/metadata/
 </dd>
 
 <dt>[Prod]</dt>
 <dd>
-Certificates for Production can be obtained at 
-https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/log.in/dokumentation.og.guides/integrationstestmiljo/
-and
-https://tu.nemlog-in.dk/oprettelse.og.administration.af.tjenester/security-token-service/hjaelp-og-vejledning/produktionsmiljoet/
+Certificates for Production can be obtained at
+
+https://www.nemlog-in.dk/metadata/
 </dd>
 
 
